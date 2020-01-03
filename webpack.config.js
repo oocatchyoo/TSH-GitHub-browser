@@ -10,9 +10,7 @@ const config = {
 
   context: path.resolve(__dirname, 'src'),
 
-  entry: {
-    app: './index.js',
-  },
+  entry: ['whatwg-fetch', './index.js'],
 
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -80,6 +78,9 @@ const config = {
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({ template: 'index.html' }),
     extractPlugin,
+    new webpack.ProvidePlugin({
+      Promise: 'es6-promise',
+    }),
   ],
 
   devServer: {

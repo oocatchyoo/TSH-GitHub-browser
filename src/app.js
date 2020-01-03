@@ -9,9 +9,17 @@ export class App {
 
       fetch(`https://api.github.com/users/${userName}`)
         .then((response) => {
-          const body = response.json;
+          if (response.status !== 200) {
+            throw new Error(`Looks like there was a problem. Status Code: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then((body) => {
           this.profile = body;
           this.updateProfile();
+        })
+        .catch((err) => {
+          throw new Error(err);
         });
     });
   }
