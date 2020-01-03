@@ -1,7 +1,7 @@
 {
-  "name": "calc",
+  "name": "tsh-gh-users-browser",
   "version": "0.1.0",
-  "description": "",
+  "description": "A browser for Github users.",
   "main": "index.js",
   "scripts": {
     "start": "./node_modules/.bin/webpack-dev-server",
