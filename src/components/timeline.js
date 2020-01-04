@@ -81,4 +81,8 @@ const dummyTimelineItems = [
   },
 ];
 
-export const getTimelineTemplate = (data) => (data || dummyTimelineItems).map((element) => getTimelineItemTemplate(element)).join('');
+export const getTimelineTemplate = (data) => (
+  data && data.length > 0
+    ? (data).map((element) => getTimelineItemTemplate(element)).join('')
+    : ''
+);

@@ -29,7 +29,20 @@ export class App {
 
       const userName = $('.username.input').val();
       this.githubService.getUserInfo(userName)
-        .then((body) => render(getUserProfileTemplate(body), $('#user-profile')))
+        .then((userInfo) => render(getUserProfileTemplate(userInfo), $('#user-profile')))
+        .then(() => this.githubService.getUserEvents(userName))
+        .then((userEvents) => {
+          const filteredElements = userEvents.filter((event) => {
+            switch (event.type) {
+              case 'PullRequestEvent':
+              case 'PullRequestReviewCommentEvent':
+                return true;
+              default:
+                return false;
+            }
+          });
+          render(getTimelineTemplate(filteredElements), $('#user-timeline'));
+        })
         .catch((err) => {
           throw new Error(err);
         });
