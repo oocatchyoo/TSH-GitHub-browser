@@ -4,13 +4,12 @@ import {
   getUserProfileTemplate,
   getTimelineTemplate,
   getNavbarTemplate,
+  NavbarUserInput,
 } from './components/index';
 import { render } from './util/index';
 
 export class App {
-  constructor(
-    githubService,
-  ) {
+  constructor(githubService) {
     this.githubService = githubService;
   }
 
@@ -20,10 +19,15 @@ export class App {
     render(getTimelineTemplate(), $('#user-timeline'));
     render(getUserProfileTemplate(), $('#user-profile'));
 
+    this.usernameInput = new NavbarUserInput($('#username-input'));
+
     // add event listeners
     $('.load-username').on('click', () => {
-      const userName = $('.username.input').val();
+      if (!this.usernameInput.isValid) {
+        return;
+      }
 
+      const userName = $('.username.input').val();
       this.githubService.getUserInfo(userName)
         .then((body) => render(getUserProfileTemplate(body), $('#user-profile')))
         .catch((err) => {
