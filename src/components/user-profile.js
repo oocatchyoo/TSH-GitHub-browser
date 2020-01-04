@@ -1,11 +1,3 @@
-const dummyProfileData = {
-  avatar_url: 'http://placekitten.com/200/200',
-  name: 'John Smith',
-  html_url: '#',
-  login: '@johnsmith',
-  bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut.',
-};
-
 const userProfileTemplate = (data) => `
     <h2 class="subtitle is-4">Profile</h2>
     <div class="profile">
@@ -26,4 +18,4 @@ const userProfileTemplate = (data) => `
     </div>
     `;
 
-export const getUserProfileTemplate = (data) => userProfileTemplate(data || dummyProfileData);
+export const getUserProfileTemplate = (data) => userProfileTemplate(data);

@@ -4,6 +4,7 @@
 .navbar {
   border-bottom: 1px solid #eee;
   margin-bottom: 8px;
+  
   #username-input.error {
     border-color: red;
   }
@@ -16,16 +17,22 @@
 .timeline {
   .timeline-item {
     padding-bottom: 1em;
+
     .timeline-content {
       width: 100%;
+
       .media {
         justify-content: center;
         align-items: center;
+
+        .media-content {
+          min-width: 0;
+        }
+
+        .media-left {
+          margin-right: 5px;
+        }
       }
     }
   }
-}
-
-.media-content {
-  min-width: 0;
 }
