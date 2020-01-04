@@ -4,6 +4,10 @@
 .navbar {
   border-bottom: 1px solid #eee;
   margin-bottom: 8px;
+
+  #username-input.error {
+    border-color: red;
+  }
 }
 
 #profile-bio {
@@ -13,12 +17,50 @@
 .timeline {
   .timeline-item {
     padding-bottom: 1em;
+
     .timeline-content {
+      width: 100%;
+
+      .media {
+        justify-content: center;
+        align-items: center;
+
+        .media-content {
+          min-width: 0;
+        }
+
+        .media-left {
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+}
+
+@media all and (max-width: 767px) {
+  .columns {
+    > .mobile-is-100 {
       width: 100%;
     }
   }
 }
 
-.media-content {
-  min-width: 0;
+@media all and (min-width: 768px) and (max-width: 1280px) {
+  .columns {
+    display: flex;
+
+    > .tablet-is-50 {
+      width: 50%;
+    }
+  }
+}
+
+@media all and (min-width: 1281px) {
+  .columns {
+    display: flex;
+
+    > .desktop-is-30 {
+      width: 30%;
+    }
+  }
 }
